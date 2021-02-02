@@ -4,7 +4,7 @@ var fs = require('fs')
 var file = 'input.txt'
 
 function checkValidPassports(passportObjs, regexObj) {
-    let validPasses = 0;
+    let validPassports = 0;
     for (let i = 0; i < passportObjs.length; i++) {
         let conditionsArray = [
             (Object.keys(regexObj).every(k => Object.keys(passportObjs[i]).includes(k))),
@@ -17,10 +17,10 @@ function checkValidPassports(passportObjs, regexObj) {
             (regexObj.pid.test(passportObjs[i].pid))
         ]
         if (!conditionsArray.includes(false)) {
-            validPasses++
+            validPassports++
         }
     }
-    return validPasses
+    return validPassports
 }
 
 fs.readFile(file, 'utf8', function (err, data) {

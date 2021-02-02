@@ -66,15 +66,10 @@ fs.readFile(file, 'utf8', function (err, data) {
         }
     )
     if (algorithmType == 'duo') {
-        // return solutionPairs(solutionPair(dataArr));
         console.log(solutionPair(solutionPairs(dataArr)));
     } else if (algorithmType == 'trio') {
-        // return solutionTrios(solutionTrio(dataArr));
         console.log(solutionTrio(solutionTrios(dataArr)));
     } else {
-        // return `invalid option, please use duo or trio`;
         console.log(`invalid option, please use duo or trio`)
     }
 })
-
-// console.log(solution);

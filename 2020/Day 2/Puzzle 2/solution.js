@@ -21,13 +21,22 @@ fs.readFile(file, 'utf8', function (err, data) {
     }
     let countArr = []
     for (let k = 0; k < finalArr.length; k++) {
-        let re = new RegExp(finalArr[k][0][1],"g")
+
         let range = finalArr[k][0][0].split('-')
-        if ((finalArr[k][1].match(re) || []).length >= range[0] && (finalArr[k][1].match(re) || []).length <= range[1]) {
-            countArr.push(finalArr[k])
+        let first = false
+        let second = false
+        if (finalArr[k][1].indexOf(finalArr[k][0][1], range[0]-1) == range[0]-1) {
+            first = true
         }
+        if (finalArr[k][1].indexOf(finalArr[k][0][1], range[1]-1) == range[1]-1) {
+            second = true
+        }
+        if ((first == true && second == true) || (first == false && second == false)) {
+            continue;
+        }
+        countArr.push(finalArr[k])
     }
-    console.log(dataArr.length)
+    console.log(finalArr.length)
     console.dir(countArr.length, {'maxArrayLength': null})
     // console.dir(finalArr, {'maxArrayLength': null})
 })
