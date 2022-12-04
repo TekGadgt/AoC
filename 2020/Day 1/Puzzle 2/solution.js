@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 
 var fs = require("fs");
-var file, delimiter, algorithmType, desiredSum;
+var file;
+var delimiter;
+var algorithmType;
+var desiredSum;
 
-if (process.argv[2] == "--help") {
+if (process.argv[2] === "--help") {
   console.log(
-    `please pass a file, delimiter, either duo or trio, and the desired sum`
+    "please pass a file, delimiter, either duo or trio, and the desired sum"
   );
-  console.log(`e.g. node solution.js input.txt \\n duo 2020`);
+  console.log("e.g. node solution.js input.txt \\n duo 2020");
 } else {
   file = process.argv[2];
   delimiter = process.argv[3];
   algorithmType = process.argv[4];
   desiredSum = process.argv[5];
-}
-if (!file) {
-  return;
 }
 
 function solutionPairs(arr) {
@@ -66,7 +66,9 @@ function solutionTrio(arr) {
 }
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data
     .split(delimiter)
     .sort((a, b) => a - b)
@@ -79,6 +81,6 @@ fs.readFile(file, "utf8", function (err, data) {
   } else if (algorithmType == "trio") {
     console.log(solutionTrio(solutionTrios(dataArr)));
   } else {
-    console.log(`invalid option, please use duo or trio`);
+    console.log("invalid option, please use duo or trio");
   }
 });

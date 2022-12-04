@@ -26,7 +26,9 @@ function checkValidPassports(passportObjs, regexObj) {
 }
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let passportObjs = data.split("\n\n").map((el) => {
     return Object.assign(
       ...el

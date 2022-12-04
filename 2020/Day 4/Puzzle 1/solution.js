@@ -14,7 +14,9 @@ function checkValidObjs(arr, expectedKeys) {
 }
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data.split("\n\n").map((el) => {
     return el.replace(/\n/g, " ").trim();
   });

@@ -4,9 +4,11 @@ var fs = require("fs");
 var file = "input.txt";
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data.split("\n").filter(function (el) {
-    return el != "";
+    return el !== "";
   });
   let subDataArr = [];
   let finalArr = [];

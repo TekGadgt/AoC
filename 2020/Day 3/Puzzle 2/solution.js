@@ -7,7 +7,7 @@ function getTrees(array, startingIndex, right, down = 1) {
   let currentIndex = startingIndex;
   let totalTrees = 0;
   for (let i = 0; i < array.length; i = i + down) {
-    if (array[i][currentIndex] == "#") {
+    if (array[i][currentIndex] === "#") {
       totalTrees++;
     }
     currentIndex = currentIndex + right;
@@ -16,11 +16,13 @@ function getTrees(array, startingIndex, right, down = 1) {
 }
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data
     .split("\n")
     .filter((el) => {
-      return el != "";
+      return el !== "";
     })
     .map((el) => {
       return el.repeat(100);

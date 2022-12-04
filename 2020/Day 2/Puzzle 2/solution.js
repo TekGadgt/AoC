@@ -4,9 +4,11 @@ var fs = require("fs");
 var file = "input.txt";
 
 fs.readFile(file, "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data.split("\n").filter(function (el) {
-    return el != "";
+    return el !== "";
   });
   let subDataArr = [];
   let finalArr = [];
@@ -25,20 +27,20 @@ fs.readFile(file, "utf8", function (err, data) {
     let first = false;
     let second = false;
     if (
-      finalArr[k][1].indexOf(finalArr[k][0][1], range[0] - 1) ==
+      finalArr[k][1].indexOf(finalArr[k][0][1], range[0] - 1) ===
       range[0] - 1
     ) {
       first = true;
     }
     if (
-      finalArr[k][1].indexOf(finalArr[k][0][1], range[1] - 1) ==
+      finalArr[k][1].indexOf(finalArr[k][0][1], range[1] - 1) ===
       range[1] - 1
     ) {
       second = true;
     }
     if (
-      (first == true && second == true) ||
-      (first == false && second == false)
+      (first === true && second === true) ||
+      (first === false && second === false)
     ) {
       continue;
     }
@@ -46,5 +48,4 @@ fs.readFile(file, "utf8", function (err, data) {
   }
   console.log(finalArr.length);
   console.dir(countArr.length, { maxArrayLength: null });
-  // console.dir(finalArr, {'maxArrayLength': null})
 });

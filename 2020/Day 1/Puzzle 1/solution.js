@@ -20,7 +20,9 @@ function solution(arr) {
 }
 
 fs.readFile("input.txt", "utf8", function (err, data) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
   let dataArr = data
     .split("\n")
     .sort((a, b) => a - b)
