@@ -13,7 +13,6 @@ function findFirstMatch(arr, len) {
   for (let i = 0; i < arr.length; i++) {
     testArr = arr.slice(i, i + len);
     if (new Set(testArr).size === len) {
-      console.log(new Set(testArr));
       return arr.slice(0, i + len);
     }
   }
